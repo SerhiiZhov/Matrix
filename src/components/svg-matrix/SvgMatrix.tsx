@@ -66,7 +66,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГИ56_57}
               </text>
               <circle
                 xmlns="http://www.w3.org/2000/svg"
@@ -2134,7 +2134,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ЗА71_72}
               </text>
               <text
                 id="pointlm2"
@@ -2145,7 +2145,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ЗА72_73}
               </text>
               <text
                 id="pointlm3"
@@ -2156,7 +2156,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ЗА73_74}
               </text>
               <text
                 id="pointlm4"
@@ -2167,7 +2167,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ЗА76_77}
               </text>
               <text
                 id="pointlm5"
@@ -2178,7 +2178,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ЗА77_78}
               </text>
               <text
                 id="pointlm6"
@@ -2189,7 +2189,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ЗА78_79}
               </text>
               <text
                 id="pointlm7"
@@ -2200,7 +2200,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.АЕ1_2}
               </text>
               <text
                 id="pointlm8"
@@ -2211,7 +2211,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.АЕ2_3}
               </text>
               <text
                 id="pointlm9"
@@ -2222,7 +2222,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.АЕ3_4}
               </text>
               <text
                 id="pointlm10"
@@ -2233,7 +2233,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.АЕ6_7}
               </text>
               <text
                 id="point-lt"
@@ -2244,7 +2244,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.АЕ5}
               </text>
               <text
                 id="point-lb"
@@ -2255,7 +2255,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ЗА75}
               </text>
               <text
                 id="point-bl"
@@ -2266,7 +2266,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГЗ65}
               </text>
               <text
                 id="point-br"
@@ -2277,7 +2277,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГИ55}
               </text>
               <text
                 id="point-rb"
@@ -2288,7 +2288,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВИ45}
               </text>
               <text
                 id="point-rt"
@@ -2299,7 +2299,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВЖ35}
               </text>
               <text
                 id="point-tr"
@@ -2310,7 +2310,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЖ25}
               </text>
               <text
                 id="point-tl"
@@ -2321,7 +2321,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЕ15}
               </text>
               <text
                 id="pointlm11"
@@ -2332,7 +2332,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.АЕ7_8}
               </text>
               <text
                 id="pointlm12"
@@ -2343,7 +2343,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.АЕ8_9}
               </text>
               <text
                 id="pointtm1"
@@ -2354,7 +2354,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЕ11_12}
               </text>
               <text
                 id="pointtm2"
@@ -2365,7 +2365,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЕ12_13}
               </text>
               <text
                 id="pointtm3"
@@ -2376,7 +2376,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЕ13_14}
               </text>
               <text
                 id="pointtm4"
@@ -2387,7 +2387,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЕ16_17}
               </text>
               <text
                 id="pointtm5"
@@ -2398,7 +2398,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЕ17_18}
               </text>
               <text
                 id="pointtm6"
@@ -2409,7 +2409,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЕ18_19}
               </text>
               <text
                 id="pointtm7"
@@ -2420,7 +2420,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЖ21_22}
               </text>
               <text
                 id="pointtm8"
@@ -2431,7 +2431,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЖ22_23}
               </text>
               <text
                 id="pointtm9"
@@ -2442,7 +2442,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЖ23_24}
               </text>
               <text
                 id="pointtm10"
@@ -2453,7 +2453,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЖ26_27}
               </text>
               <text
                 id="pointtm11"
@@ -2464,7 +2464,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЖ27_28}
               </text>
               <text
                 id="pointtm12"
@@ -2475,7 +2475,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.БЖ28_29}
               </text>
               <text
                 id="pointrm1"
@@ -2486,7 +2486,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВЖ31_32}
               </text>
               <text
                 id="pointrm2"
@@ -2497,7 +2497,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВЖ32_33}
               </text>
               <text
                 id="pointrm3"
@@ -2508,7 +2508,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВЖ33_34}
               </text>
               <text
                 id="pointrm4"
@@ -2519,7 +2519,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВЖ36_37}
               </text>
               <text
                 id="pointrm5"
@@ -2530,7 +2530,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВЖ37_38}
               </text>
               <text
                 id="pointrm6"
@@ -2541,7 +2541,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВЖ38_39}
               </text>
               <text
                 id="pointrm7"
@@ -2552,7 +2552,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВИ41_42}
               </text>
               <text
                 id="pointrm8"
@@ -2563,7 +2563,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВИ42_43}
               </text>
               <text
                 id="pointrm9"
@@ -2574,7 +2574,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВИ43_44}
               </text>
               <text
                 id="pointrm10"
@@ -2585,7 +2585,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВИ46_47}
               </text>
               <text
                 id="pointrm11"
@@ -2596,7 +2596,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВИ47_48}
               </text>
               <text
                 id="pointrm12"
@@ -2607,7 +2607,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ВИ48_49}
               </text>
               <text
                 id="pointbm1"
@@ -2618,7 +2618,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГИ51_52}
               </text>
               <text
                 id="pointbm2"
@@ -2629,7 +2629,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГИ52_53}
               </text>
               <text
                 id="pointbm3"
@@ -2640,7 +2640,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГИ53_54}
               </text>
               <text
                 id="pointbm5"
@@ -2651,7 +2651,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГИ57_58}
               </text>
               <text
                 id="pointbm6"
@@ -2662,7 +2662,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГИ58_59}
               </text>
               <text
                 id="pointbm7"
@@ -2673,7 +2673,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГЗ61_62}
               </text>
               <text
                 id="pointbm8"
@@ -2684,7 +2684,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГЗ62_63}
               </text>
               <text
                 id="pointbm9"
@@ -2695,7 +2695,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГЗ63_64}
               </text>
               <text
                 id="pointbm10"
@@ -2706,7 +2706,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГЗ66_67}
               </text>
               <text
                 id="pointbm11"
@@ -2717,7 +2717,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГЗ67_68}
               </text>
               <text
                 id="pointbm12"
@@ -2728,7 +2728,7 @@ const SvgMatrix = ({ matrixNumbers }) => {
                   fontFamily: "ArialMT, Arial",
                 }}
               >
-                0
+                {matrixNumbers?.ГЗ68_69}
               </text>
               <path
                 d="M285,306.4l.5-.5.4-10s-.2-4.8-5-5.1-4.9,5.6-4.9,5.6-5.9-1-6,4.9,10.1,5.1,10.1,5.1Z"
