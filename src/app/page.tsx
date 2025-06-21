@@ -4,22 +4,41 @@ import * as yup from "yup";
 import SvgMatrix from "@/components/svg-matrix/SvgMatrix";
 import styles from "./page.module.scss";
 import { validationSchema } from "@/lib/yup";
+import ChakraTable from "@/components/chakratable/chakraTable";
+import DestinyCards from "@/components/destinycards/destinyCards";
 
 export default function Home() {
   const [birthDate, setBirthDate] = useState("");
   const [error, setError] = useState("");
-  const [matrixNumbers, setMatrixNumbers] = useState(null);
-  const [healthCart1, setHealthCart1] = useState(null);
-  const [healthCart2, setHealthCart2] = useState(null);
-  const [healthCart3, setHealthCart3] = useState(null);
+  const [age, setAge] = useState<number | null>(null);
+  type MatrixNumbers = {
+    [key: string]: any;
+  };
+  const [matrixNumbers, setMatrixNumbers] = useState<MatrixNumbers | null>(
+    null
+  );
+  type HealthCart = {
+    sahasrara: any;
+    ajna: any;
+    wishudha: any;
+    anahata: any;
+    manipura: any;
+    svadhistana: any;
+    muladhara: any;
+  };
+
+  const [healthCart1, setHealthCart1] = useState<HealthCart | null>(null);
+  const [healthCart2, setHealthCart2] = useState<HealthCart | null>(null);
+  const [healthCart3, setHealthCart3] = useState<HealthCart | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await validationSchema.validate({ birthDate });
+      setAge(calculateAge(birthDate));
       const [year, month, day] = String(birthDate).split("-");
-      const а = checkTwentyTwo(day);
-      const б = checkTwentyTwo(month);
+      const а = checkTwentyTwo(Number(day));
+      const б = checkTwentyTwo(Number(month));
       const в = checkTwentyTwo(
         [...year].reduce((acc, value) => acc + +value, 0)
       );
@@ -247,133 +266,102 @@ export default function Home() {
       if (err instanceof yup.ValidationError) {
         setError(err.message);
       }
-    } finally {
-      setBirthDate("");
     }
   };
 
-  function removeLeadingZeros(number) {
+  function removeLeadingZeros(number: number) {
     return Number(number);
   }
 
-  function sumAllDigits(number) {
+  function sumAllDigits(number: number) {
     return String(number)
       .split("")
       .map(Number)
       .reduce((acc, value) => acc + value, 0);
   }
 
-  function checkTwentyTwo(number) {
+  function checkTwentyTwo(number: number) {
     number = removeLeadingZeros(number);
     return number > 22 ? sumAllDigits(number) : number;
   }
 
-  function sumObjectValues(obj) {
+  function sumObjectValues(obj: Record<string, number>) {
     return Object.values(obj).reduce((acc, value) => acc + value, 0);
   }
+  const calculateAge = (dateString: string): number => {
+    const today = new Date();
+    const birthDate = new Date(dateString);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  };
+
+  const getAgeWord = (age: number): string => {
+    if (age % 10 === 1 && age % 100 !== 11) return "рік";
+    if ([2, 3, 4].includes(age % 10) && ![12, 13, 14].includes(age % 100))
+      return "роки";
+    return "років";
+  };
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.matrixChartSectionWrapper}>
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.inputWrapper}>
-              <div className={styles.inputContainer}>
-                <h1 className={styles.title}>Введіть дату народження</h1>
-                <input
-                  type="date"
-                  id="BirthDate"
-                  name="BirthDate"
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  className={styles.input}
-                />
-                {error && <p className={styles.errorText}>{error}</p>}
-                <button
-                  disabled={birthDate ? false : true}
-                  type="submit"
-                  className={styles.submitButton}
-                >
-                  {birthDate ? "Розрахувати" : "Оберіть дату"}
-                </button>
-              </div>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.inputWrapper}>
+            <div className={styles.inputContainer}>
+              <h1 className={styles.title}>Введіть дату народження</h1>
+              <input
+                type="date"
+                id="BirthDate"
+                name="BirthDate"
+                value={birthDate}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setBirthDate(value);
+                }}
+                className={styles.input}
+              />
+              {error && <p className={styles.errorText}>{error}</p>}
+              <button
+                disabled={birthDate ? false : true}
+                type="submit"
+                className={styles.submitButton}
+              >
+                {birthDate ? "Розрахувати" : "Оберіть дату"}
+              </button>
             </div>
-          </form>
-          <SvgMatrix matrixNumbers={matrixNumbers} />
-          <h2>
-            сахасрара{matrixNumbers?.А}:{matrixNumbers?.Б}:{matrixNumbers?.Е}
-          </h2>
-          <h2>
-            аджна{matrixNumbers?.А2}:{matrixNumbers?.Б2}:
-            {checkTwentyTwo(matrixNumbers?.А2 + matrixNumbers?.Б2)}
-          </h2>
-          <h2>
-            вішудха{matrixNumbers?.А1}:{matrixNumbers?.Б1}:
-            {checkTwentyTwo(matrixNumbers?.А1 + matrixNumbers?.Б1)}
-          </h2>
-          <h2>
-            анахата{matrixNumbers?.А3}:{matrixNumbers?.Б3}:{" "}
-            {checkTwentyTwo(matrixNumbers?.А3 + matrixNumbers?.Б3)}
-          </h2>
-          <h2>
-            маніпура{matrixNumbers?.Д}:{matrixNumbers?.Д}:{" "}
-            {checkTwentyTwo(matrixNumbers?.Д + matrixNumbers?.Д)}
-          </h2>
-          <h2>
-            свадхістана{matrixNumbers?.В1}:{matrixNumbers?.Г1}:{" "}
-            {checkTwentyTwo(matrixNumbers?.Г1 + matrixNumbers?.В1)}
-          </h2>
-          <h2>
-            муладхара{matrixNumbers?.В}:{matrixNumbers?.Г}:{" "}
-            {checkTwentyTwo(matrixNumbers?.В + matrixNumbers?.Г)}
-          </h2>
-          <h2>
-            суму{healthCart1 && checkTwentyTwo(sumObjectValues(healthCart1))}:
-            {healthCart2 && checkTwentyTwo(sumObjectValues(healthCart2))}:
-            {healthCart3 && checkTwentyTwo(sumObjectValues(healthCart3))}
-          </h2>
-          <br />
-          <br />
-          <br />
-          <h3>Особисте призначення</h3>
-          {checkTwentyTwo(
-            checkTwentyTwo(matrixNumbers?.Б + matrixNumbers?.Г) +
-              checkTwentyTwo(matrixNumbers?.В + matrixNumbers?.А)
-          )}
-          <h3>Соціальне призначенни </h3>
-          {checkTwentyTwo(
-            checkTwentyTwo(matrixNumbers?.Е + matrixNumbers?.И) +
-              checkTwentyTwo(matrixNumbers?.Ж + matrixNumbers?.З)
-          )}
-          <h3>Духовна грамотність </h3>
-          {checkTwentyTwo(
-            checkTwentyTwo(
-              checkTwentyTwo(matrixNumbers?.Б + matrixNumbers?.Г) +
-                checkTwentyTwo(matrixNumbers?.В + matrixNumbers?.А)
-            ) +
-              checkTwentyTwo(
-                checkTwentyTwo(matrixNumbers?.Е + matrixNumbers?.И) +
-                  checkTwentyTwo(matrixNumbers?.Ж + matrixNumbers?.З)
-              )
-          )}
-          <h3>Планетарная грамотність </h3>
-          {checkTwentyTwo(
-            checkTwentyTwo(
-              checkTwentyTwo(matrixNumbers?.Е + matrixNumbers?.И) +
-                checkTwentyTwo(matrixNumbers?.Ж + matrixNumbers?.З)
-            ) +
-              checkTwentyTwo(
-                checkTwentyTwo(
-                  checkTwentyTwo(matrixNumbers?.Б + matrixNumbers?.Г) +
-                    checkTwentyTwo(matrixNumbers?.В + matrixNumbers?.А)
-                ) +
-                  checkTwentyTwo(
-                    checkTwentyTwo(matrixNumbers?.Е + matrixNumbers?.И) +
-                      checkTwentyTwo(matrixNumbers?.Ж + matrixNumbers?.З)
-                  )
-              )
-          )}
+          </div>
+        </form>
+        {age !== null && (
+          <p className={styles.ageText}>
+            Ваш вік: {age} {getAgeWord(age)}
+          </p>
+        )}
+        <div className={styles.matrixChartSectionWrapper}>
+          <div>
+            {matrixNumbers && <SvgMatrix matrixNumbers={matrixNumbers} />}
+          </div>
+          <div style={{ order: -1 }}>
+            <ChakraTable
+              matrixNumbers={matrixNumbers ?? {}}
+              checkTwentyTwo={checkTwentyTwo}
+              healthCart1={healthCart1 ?? undefined}
+              healthCart2={healthCart2 ?? undefined}
+              healthCart3={healthCart3 ?? undefined}
+              sumObjectValues={sumObjectValues}
+            />
+          </div>
         </div>
+        <DestinyCards
+          matrixNumbers={matrixNumbers ?? {}}
+          checkTwentyTwo={checkTwentyTwo}
+        />
       </div>
     </section>
   );

@@ -1,6 +1,14 @@
 import styles from "./SvgMatrix.module.scss";
 
-const SvgMatrix = ({ matrixNumbers }) => {
+interface MatrixNumbers {
+  [key: string]: string | number | undefined;
+}
+
+interface SvgMatrixProps {
+  matrixNumbers: MatrixNumbers;
+}
+
+const SvgMatrix = ({ matrixNumbers }: SvgMatrixProps) => {
   return (
     <div className={styles.matrixCalcWrapper}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 505.2 462.3">
