@@ -188,6 +188,7 @@ const ChakraTable: React.FC<ChakraTableProps> = ({
       justifyContent: "center",
       color: "#6b7280",
       fontWeight: "500",
+      fontSize: "16px",
     },
     totalRow: {
       background: "#f9fafb",
