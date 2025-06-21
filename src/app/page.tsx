@@ -345,7 +345,7 @@ export default function Home() {
         )}
         <div className={styles.matrixChartSectionWrapper}>
           <div>
-            {matrixNumbers && <SvgMatrix matrixNumbers={matrixNumbers} />}
+            <SvgMatrix matrixNumbers={matrixNumbers ? matrixNumbers : {}} />
           </div>
           <div style={{ order: -1 }}>
             <ChakraTable
