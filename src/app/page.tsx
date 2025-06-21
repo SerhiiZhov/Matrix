@@ -12,19 +12,19 @@ export default function Home() {
   const [error, setError] = useState("");
   const [age, setAge] = useState<number | null>(null);
   type MatrixNumbers = {
-    [key: string]: any;
+    [key: string]: number;
   };
   const [matrixNumbers, setMatrixNumbers] = useState<MatrixNumbers | null>(
     null
   );
   type HealthCart = {
-    sahasrara: any;
-    ajna: any;
-    wishudha: any;
-    anahata: any;
-    manipura: any;
-    svadhistana: any;
-    muladhara: any;
+    sahasrara: number;
+    ajna: number;
+    wishudha: number;
+    anahata: number;
+    manipura: number;
+    svadhistana: number;
+    muladhara: number;
   };
 
   const [healthCart1, setHealthCart1] = useState<HealthCart | null>(null);
