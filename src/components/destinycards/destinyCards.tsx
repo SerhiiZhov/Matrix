@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./destinyCards.module.scss";
+import checkTwentyTwo from "@/utils/checkTwentyTwo";
 
 interface MatrixNumbers {
   [key: string]: number | undefined;
@@ -15,13 +16,9 @@ interface MatrixNumbers {
 
 interface DestinyCardsProps {
   matrixNumbers: MatrixNumbers;
-  checkTwentyTwo: (value: number) => number;
 }
 
-const DestinyCards: React.FC<DestinyCardsProps> = ({
-  matrixNumbers,
-  checkTwentyTwo,
-}) => {
+const DestinyCards: React.FC<DestinyCardsProps> = ({ matrixNumbers }) => {
   const personalDestiny = checkTwentyTwo(
     checkTwentyTwo((matrixNumbers?.Б || 0) + (matrixNumbers?.Г || 0)) +
       checkTwentyTwo((matrixNumbers?.В || 0) + (matrixNumbers?.А || 0))

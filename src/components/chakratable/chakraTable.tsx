@@ -1,10 +1,10 @@
 import React from "react";
-
+import checkTwentyTwo from "@/utils/checkTwentyTwo";
 type ChakraTableProps = {
   matrixNumbers: {
     [key: string]: number | undefined;
   };
-  checkTwentyTwo?: (value: number) => number;
+
   healthCart1?: { [key: string]: number };
   healthCart2?: { [key: string]: number };
   healthCart3?: { [key: string]: number };
@@ -13,7 +13,6 @@ type ChakraTableProps = {
 
 const ChakraTable: React.FC<ChakraTableProps> = ({
   matrixNumbers,
-  checkTwentyTwo,
   healthCart1,
   healthCart2,
   healthCart3,
@@ -97,7 +96,6 @@ const ChakraTable: React.FC<ChakraTableProps> = ({
     },
   ];
 
-  // Рассчитываем суммы
   const getTotalPhysics = () => {
     if (healthCart1 && sumObjectValues) {
       return checkTwentyTwo
