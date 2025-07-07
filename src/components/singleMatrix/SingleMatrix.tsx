@@ -6,7 +6,7 @@ import SvgMatrix from "@/components/svg-matrix/SvgMatrix";
 import ChakraTable from "@/components/chakratable/chakraTable";
 import DestinyCards from "@/components/destinycards/destinyCards";
 import calculateMatrix from "@/utils/calculateMatrix";
-import styles from "./singleMatrix.module.scss";
+import styles from "./SingleMatrix.module.scss";
 
 const SingleMatrix: FC = () => {
   const [birthDate, setBirthDate] = useState("");
