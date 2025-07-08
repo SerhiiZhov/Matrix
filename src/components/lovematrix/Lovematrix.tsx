@@ -34,25 +34,186 @@ const Lovematrix: FC = () => {
   const [healthCart2_2, setHealthCart2_2] = useState<HealthCart>({});
   const [healthCart3_2, setHealthCart3_2] = useState<HealthCart>({});
 
+  const getMaxDayInMonth = (month: number, year: number): number => {
+    if (!month || !year) return 31;
+
+    const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    // Проверка на високосный год для февраля
+    if (month === 2) {
+      const isLeapYear =
+        (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+      return isLeapYear ? 29 : 28;
+    }
+
+    return daysInMonth[month - 1] || 31;
+  };
+
+  const formatDateInput = (value: string): string => {
+    // Удаляем все нецифровые символы
+    const numbers = value.replace(/\D/g, "");
+
+    // Форматируем в ДД.ММ.ГГГГ с валидацией
+    if (numbers.length <= 2) {
+      // Валидация дня (максимум 31)
+      const day = parseInt(numbers);
+      if (day > 31) {
+        return numbers.slice(0, 1);
+      }
+      return numbers;
+    } else if (numbers.length <= 4) {
+      const day = numbers.slice(0, 2);
+      const month = numbers.slice(2);
+
+      // Валидация месяца (максимум 12)
+      const monthNum = parseInt(month);
+      if (monthNum > 12) {
+        return `${day}.1`;
+      }
+
+      return `${day}.${month}`;
+    } else if (numbers.length <= 8) {
+      const day = numbers.slice(0, 2);
+      const month = numbers.slice(2, 4);
+      const year = numbers.slice(4);
+
+      // Валидация месяца
+      const monthNum = parseInt(month);
+      if (monthNum > 12) {
+        return `${day}.12.${year}`;
+      }
+
+      // Валидация дня в зависимости от месяца
+      const dayNum = parseInt(day);
+      const yearNum = parseInt(year);
+      const maxDay = getMaxDayInMonth(monthNum, yearNum);
+
+      if (dayNum > maxDay) {
+        return `${maxDay.toString().padStart(2, "0")}.${month}.${year}`;
+      }
+
+      return `${day}.${month}.${year}`;
+    } else {
+      const day = numbers.slice(0, 2);
+      const month = numbers.slice(2, 4);
+      const year = numbers.slice(4, 8);
+
+      // Валидация месяца
+      const monthNum = parseInt(month);
+      if (monthNum > 12) {
+        return `${day}.12.${year}`;
+      }
+
+      // Валидация дня в зависимости от месяца
+      const dayNum = parseInt(day);
+      const yearNum = parseInt(year);
+      const maxDay = getMaxDayInMonth(monthNum, yearNum);
+
+      if (dayNum > maxDay) {
+        return `${maxDay.toString().padStart(2, "0")}.${month}.${year}`;
+      }
+
+      return `${day}.${month}.${year}`;
+    }
+  };
+
+  const handleDateChange = (value: string, setter: (value: string) => void) => {
+    const formatted = formatDateInput(value);
+    setter(formatted);
+  };
+
+  const validateDateInput = (formattedDate: string): boolean => {
+    const parts = formattedDate.split(".");
+    if (parts.length !== 3) return false;
+
+    const day = parseInt(parts[0]);
+    const month = parseInt(parts[1]);
+    const year = parseInt(parts[2]);
+
+    // Базовая валидация
+    if (day < 1 || day > 31) return false;
+    if (month < 1 || month > 12) return false;
+    if (year < 1900 || year > new Date().getFullYear()) return false;
+
+    // Проверка корректности дня для конкретного месяца
+    const maxDay = getMaxDayInMonth(month, year);
+    if (day > maxDay) return false;
+
+    return true;
+  };
+
+  const convertToISO = (dateString: string): string => {
+    // Преобразуем ДД.ММ.ГГГГ в ГГГГ-ММ-ДД для date input
+    const parts = dateString.split(".");
+    if (parts.length === 3 && parts[2].length === 4) {
+      return `${parts[2]}-${parts[1].padStart(2, "0")}-${parts[0].padStart(
+        2,
+        "0"
+      )}`;
+    }
+    return "";
+  };
+
+  const convertFromISO = (isoString: string): string => {
+    // Преобразуем ГГГГ-ММ-ДД в ДД.ММ.ГГГГ
+    if (isoString) {
+      const date = new Date(isoString);
+      const day = date.getDate().toString().padStart(2, "0");
+      const month = (date.getMonth() + 1).toString().padStart(2, "0");
+      const year = date.getFullYear();
+      return `${day}.${month}.${year}`;
+    }
+    return "";
+  };
+
+  const parseFormattedDate = (formattedDate: string): string => {
+    // Конвертируем ДД.ММ.ГГГГ в формат для валидации ГГГГ-ММ-ДД
+    const parts = formattedDate.split(".");
+    if (parts.length === 3 && parts[2].length === 4) {
+      return `${parts[2]}-${parts[1].padStart(2, "0")}-${parts[0].padStart(
+        2,
+        "0"
+      )}`;
+    }
+    return formattedDate;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await validationSchema.validate({ birthDate: birthDate1 });
-      await validationSchema.validate({ birthDate: birthDate2 });
+      // Дополнительная валидация для мобильных инпутов
+      if (!validateDateInput(birthDate1)) {
+        setError("Будь ласка, введіть коректну дату народження (ДД.ММ.ГГГГ)");
+        return;
+      }
 
-      const [m1, h11, h12, h13] = calculateMatrix(birthDate1);
+      if (!validateDateInput(birthDate2)) {
+        setError(
+          "Будь ласка, введіть коректну дату народження партнера (ДД.ММ.ГГГГ)"
+        );
+        return;
+      }
+
+      // Конвертируем даты для валидации
+      const date1ForValidation = parseFormattedDate(birthDate1);
+      const date2ForValidation = parseFormattedDate(birthDate2);
+
+      await validationSchema.validate({ birthDate: date1ForValidation });
+      await validationSchema.validate({ birthDate: date2ForValidation });
+
+      const [m1, h11, h12, h13] = calculateMatrix(date1ForValidation);
       setMatrixNumbers1(m1);
       setHealthCart1_1(h11);
       setHealthCart2_1(h12);
       setHealthCart3_1(h13);
-      setAge1(calculateAge(birthDate1));
+      setAge1(calculateAge(date1ForValidation));
 
-      const [m2, h21, h22, h23] = calculateMatrix(birthDate2);
+      const [m2, h21, h22, h23] = calculateMatrix(date2ForValidation);
       setMatrixNumbers2(m2);
       setHealthCart1_2(h21);
       setHealthCart2_2(h22);
       setHealthCart3_2(h23);
-      setAge2(calculateAge(birthDate2));
+      setAge2(calculateAge(date2ForValidation));
       const combined = combineSvgMatrixProps(m1, m2);
       setCombinedMatrixNumbers(combined);
       setError("");
@@ -112,11 +273,25 @@ const Lovematrix: FC = () => {
           <div className={styles.inputWrapper}>
             <div className={styles.inputContainer}>
               <h1 className={styles.title}>Введіть Вашу дату народження</h1>
+
+              <input
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="ДД.ММ.ГГГГ"
+                value={birthDate1}
+                onChange={(e) =>
+                  handleDateChange(e.target.value, setBirthDate1)
+                }
+                className={`${styles.input} ${styles.mobileInput}`}
+                maxLength={10}
+              />
+
               <input
                 type="date"
-                value={birthDate1}
-                onChange={(e) => setBirthDate1(e.target.value)}
-                className={styles.input}
+                value={convertToISO(birthDate1)}
+                onChange={(e) => setBirthDate1(convertFromISO(e.target.value))}
+                className={`${styles.input} ${styles.desktopInput}`}
               />
             </div>
           </div>
@@ -125,11 +300,25 @@ const Lovematrix: FC = () => {
               <h2 className={styles.title}>
                 Введіть дату народження вашого партнера
               </h2>
+
+              <input
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="ДД.ММ.ГГГГ"
+                value={birthDate2}
+                onChange={(e) =>
+                  handleDateChange(e.target.value, setBirthDate2)
+                }
+                className={`${styles.input} ${styles.mobileInput}`}
+                maxLength={10}
+              />
+
               <input
                 type="date"
-                value={birthDate2}
-                onChange={(e) => setBirthDate2(e.target.value)}
-                className={styles.input}
+                value={convertToISO(birthDate2)}
+                onChange={(e) => setBirthDate2(convertFromISO(e.target.value))}
+                className={`${styles.input} ${styles.desktopInput}`}
               />
             </div>
           </div>

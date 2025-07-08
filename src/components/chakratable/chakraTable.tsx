@@ -65,7 +65,7 @@ const ChakraTable: React.FC<ChakraTableProps> = ({
       id: 5,
       name: "Маніпура-чакра",
       description: "Статус, партнерство, місце в соціумі, гроші",
-      color: "#F59E0B",
+      color: "#daad39",
       physics: matrixNumbers?.Д || 0,
       energy: matrixNumbers?.Д || 0,
       emotions: checkTwentyTwo
@@ -76,7 +76,7 @@ const ChakraTable: React.FC<ChakraTableProps> = ({
       id: 6,
       name: "Свадхістана-чакра",
       description: "Радість, задоволення",
-      color: "#EF4444",
+      color: "#da8d4a",
       physics: matrixNumbers?.В1 || 0,
       energy: matrixNumbers?.Г1 || 0,
       emotions: checkTwentyTwo
