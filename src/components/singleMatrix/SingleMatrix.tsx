@@ -221,7 +221,6 @@ const SingleMatrix: FC = () => {
             <input
               type="text"
               inputMode="numeric"
-              pattern="[0-9]*"
               placeholder="ДД.ММ.ГГГГ"
               value={birthDate}
               onChange={(e) => handleDateChange(e.target.value)}

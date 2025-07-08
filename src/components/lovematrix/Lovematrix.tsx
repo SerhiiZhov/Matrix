@@ -277,7 +277,6 @@ const Lovematrix: FC = () => {
               <input
                 type="text"
                 inputMode="numeric"
-                pattern="[0-9]*"
                 placeholder="ДД.ММ.ГГГГ"
                 value={birthDate1}
                 onChange={(e) =>
@@ -304,7 +303,6 @@ const Lovematrix: FC = () => {
               <input
                 type="text"
                 inputMode="numeric"
-                pattern="[0-9]*"
                 placeholder="ДД.ММ.ГГГГ"
                 value={birthDate2}
                 onChange={(e) =>
