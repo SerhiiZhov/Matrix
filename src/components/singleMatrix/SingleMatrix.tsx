@@ -114,7 +114,6 @@ const SingleMatrix: FC = () => {
 
     if (day < 1 || day > 31) return false;
     if (month < 1 || month > 12) return false;
-    if (year < 1900 || year > new Date().getFullYear()) return false;
 
     const maxDay = getMaxDayInMonth(month, year);
     if (day > maxDay) return false;

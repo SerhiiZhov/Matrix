@@ -133,7 +133,6 @@ const Lovematrix: FC = () => {
     // Базовая валидация
     if (day < 1 || day > 31) return false;
     if (month < 1 || month > 12) return false;
-    if (year < 1900 || year > new Date().getFullYear()) return false;
 
     // Проверка корректности дня для конкретного месяца
     const maxDay = getMaxDayInMonth(month, year);
